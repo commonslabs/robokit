@@ -109,3 +109,45 @@ def homo_rotate2d(degrees):
     h = np.concatenate((rotation_matrix, np.array([[0], [0]])), axis=1)
     h = np.concatenate((h, np.array([[0, 0, 1]])), axis=0)
     return h
+
+
+# ---------------------------------------------------------------------------------------#
+def pose2d(x, y, degrees):
+    """Return a 2D homogenous transformation of a rotation and translation
+
+    Args:
+        x (int): The x translation
+        y (int): The y translation
+        degrees (int): The angle of degrees to rotate
+
+    Returns:
+        Iterable[Int]: numpy ndarray of a homogenous transformation matrix
+
+    Examples:
+        Returns a homogenous transformation identity matrix:
+        >>> pose2d(0, 0, 0)
+        array([[1., 0., 0.],
+               [0., 1., 0.],
+               [0., 0., 1.]])
+
+        Returns a homogenous transformation matrix for the given angle of rotation:
+        >>> pose2d(0, 0, 30)
+        array([[ 0.8660254, -0.5      ,  0.       ],
+               [ 0.5      ,  0.8660254,  0.       ],
+               [ 0.       ,  0.       ,  1.       ]])
+
+        Returns a homogenous transformation matrix for the given x- and y-translation:
+        >>> pose2d(1, 1, 0)
+        array([[1., 0., 1.],
+               [0., 1., 1.],
+               [0., 0., 1.]])
+
+        Returns a homogenous transformation matrix for arbitrary rotation and translation:
+        >>> pose2d(5, 3, 45)
+        array([[ 0.70710678, -0.70710678,  5.        ],
+               [ 0.70710678,  0.70710678,  3.        ],
+               [ 0.        ,  0.        ,  1.        ]])
+    """
+    translation = homo_translate2d(x, y)
+    rotation = homo_rotate2d(degrees)
+    return translation.dot(rotation)
