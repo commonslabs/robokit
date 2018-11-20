@@ -42,13 +42,53 @@ class TestTransform2d(unittest.TestCase):
         np.testing.assert_array_equal(result, expected)
 
     def test_translate2d_with_broadcastable_vector_will_boardcast(self):
-        boardcastable_vector = np.array([[1, 1],[1, 1]])
+        boardcastable_vector = np.array([[1, 1], [1, 1]])
         result = transform2d.translate2d(boardcastable_vector, 1, 1)
         expected = np.array([[2, 2], [2, 2]])
 
-    def test_translate2d_with_3d_vector_will_raise_exception(self):
+    def test_translate2d_with_nonbroadcastable_vector_will_raise_exception(
+            self):
         vector = np.array([0, 0, 0])
         self.assertRaises(ValueError, transform2d.translate2d, vector, 1, 1)
+
+    def test_rotate2d_by_0_degrees_will_return_original_vector(self):
+        vector = np.array([0, 0])
+        result = transform2d.rotate2d(vector, 0)
+        expected = np.array([0, 0])
+        np.testing.assert_array_equal(result, expected)
+
+    def test_rotate2d_origin_vectors_rotated_will_return_an_origin_vector(
+            self):
+        vector = np.array([0, 0])
+        result = transform2d.rotate2d(vector, 20)
+        expected = np.array([0, 0])
+        np.testing.assert_array_equal(result, expected)
+
+    def test_rotated2d_vector_rotated_by_20_degrees_will_return_rotated_vector(
+            self):
+        vector = np.array([1, 0])
+        result = transform2d.rotate2d(vector, 20)
+        expected = np.array([0.93969262, 0.34202014])
+        np.testing.assert_array_almost_equal(result, expected)
+
+    def test_rotate2d_with_scalar_will_boardcast(self):
+        scalar = 1
+        result = transform2d.rotate2d(scalar, 20)
+        expected = np.array([[0.93969262, -0.34202014],
+                             [0.34202014, 0.93969262]])
+        np.testing.assert_array_almost_equal(result, expected)
+
+    def test_rotate2d_with_broadcastable_vector_will_boardcast(self):
+        boardcastable_vector = np.array([[1, 1], [1, 1]])
+        result = transform2d.rotate2d(boardcastable_vector, 20)
+        expected = np.array([[0.59767248, 0.59767248],
+                             [1.28171276, 1.28171276]])
+        np.testing.assert_array_almost_equal(result, expected)
+
+    def test_rotate2d_with_nonbroadcastable_vector_will_raise_exception(self):
+        vector = np.array([0, 0, 0])
+        self.assertRaises(ValueError, transform2d.rotate2d, vector, 20)
+
 
 if __name__ == '__main__':
     unittest.main()
