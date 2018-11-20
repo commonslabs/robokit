@@ -11,6 +11,7 @@ This module depends heavily on the numpy package.
 import numpy as np
 
 
+# ---------------------------------------------------------------------------------------#
 def homo_translate2d(x, y):
     """Returns homogenous translation matrix for given x and y
 
@@ -44,6 +45,7 @@ def homo_translate2d(x, y):
     return np.array([[1, 0, x], [0, 1, y], [0, 0, 1]])
 
 
+# ---------------------------------------------------------------------------------------#
 def rotate2d(degrees):
     """Return 2D rotation matrix based on the given angle
 
@@ -74,6 +76,7 @@ def rotate2d(degrees):
                      [np.sin(theta), np.cos(theta)]])
 
 
+# ---------------------------------------------------------------------------------------#
 def homo_rotate2d(degrees):
     """Return a homogenous transformation of a rotation based on the given angle
 
