@@ -35,6 +35,17 @@ class TestTransform2d(unittest.TestCase):
         expected = np.array([8, 9])
         np.testing.assert_array_equal(result, expected)
 
+    def test_translate2d_with_scalar_will_boardcast(self):
+        scalar = 1
+        result = transform2d.translate2d(scalar, 1, 1)
+        expected = np.array([2, 2])
+        np.testing.assert_array_equal(result, expected)
+
+    def test_translate2d_with_broadcastable_vector_will_boardcast(self):
+        boardcastable_vector = np.array([[1, 1],[1, 1]])
+        result = transform2d.translate2d(boardcastable_vector, 1, 1)
+        expected = np.array([[2, 2], [2, 2]])
+
     def test_translate2d_with_3d_vector_will_raise_exception(self):
         vector = np.array([0, 0, 0])
         self.assertRaises(ValueError, transform2d.translate2d, vector, 1, 1)

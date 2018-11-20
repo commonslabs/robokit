@@ -34,5 +34,14 @@ def translate2d(vector, x, y):
         >>> translate2d(np.array([1, 3]), 2, 2)
         array([3, 5])
 
+        Boadcasts when `vector` argument is a scalar:
+        >>> translate2d(1, 1, 1)
+        array([2, 2])
+
+        Boadcasts when translation is a boardast-able into vector shape:
+        >>> translate2d(np.array([[1, 1],[1, 1]]), 1, 1)
+        array([[2, 2],
+               [2, 2]])
+
     """
     return np.array([x, y]) + vector
