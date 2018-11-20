@@ -11,8 +11,8 @@ This module depends heavily on the numpy package.
 import numpy as np
 
 
-def translate(vector, x, y):
-    """Return 2D vector translated by given x and y values
+def translate2d(vector, x, y):
+    """Return 2D vector translate2dd by given x and y values
 
     Args:
         vector (Iterable[int]): numpy ndarray of shape (2,)
@@ -27,11 +27,11 @@ def translate(vector, x, y):
 
     Examples:
         Translates x and y of origin vector:
-        >>> translate(np.array([0, 0]), 1, 1)
+        >>> translate2d(np.array([0, 0]), 1, 1)
         array([1, 1])
 
         Translates x and y arbitrary vector:
-        >>> translate(np.array([1, 3]), 2, 2)
+        >>> translate2d(np.array([1, 3]), 2, 2)
         array([3, 5])
 
     """
