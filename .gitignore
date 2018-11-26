@@ -113,3 +113,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Docs generator
+py2md.py
