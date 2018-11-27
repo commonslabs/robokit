@@ -5,7 +5,7 @@ install:
 script:
 - python -m unittest discover --start-directory ./tests/ --pattern '*_test.py' --verbose
 after_success:
-  - .travis/push.sh
+- ".travis/push.sh"
 deploy:
   provider: pypi
   user: thomascountz
@@ -14,3 +14,6 @@ deploy:
   on:
     branch: pre-deploy
     tags: true
+env:
+  global:
+    secure: lKHEW875n1DEGJZd6ugNiQmiQ1xdZy51BLvgrTIYz6XN6mrVLDLbb+7gAED7NgObrf+GiClF+hG5Xk64+RkAGcpuED+gT4cHOmMSehfikO+a1p1CpZg8qQsPoqMne+VLTX+/MqD5SJ8cwik3PC0ME9QgUbhBDmr441GV1YqLGTCpxfbpsfYfmELf3d6PeqWB4kcrLEWVs7hDOtVrnF/vH5eOpu2sJ80Ed+UbpZXnuOVZITJ/tG93tKH1c4eBGHrnRIVxKYb5AFt28AD3RwLss16JMJ1FvAfJxGyf6WnoQakLrpC3jJwQc/3MC6/dbm8fhfjreOtv3GfcrjizMYZIWMmulQ4+ZeS7ujQhVNaD9KFR6VO/plbQ4rsKKZxyhFMS4DzX+CtugEQXVFP2+GLLW8wqXNbJUObAbetvak79PPCyDScSblMdQs8GznQKGvS8SE+MVxhBt/vVHWhaqR7XbV9qhz4uqZTorTuQwp/IS7F5KAwx6MsnXjnMHpOknPXH969u5azo6IefyJCXR1j6PLiOUyWGkJ8YBoa8SA7jtrRiKAKymPxbKMou6rGc+M/WNoKx9jAyPZfNAnnukrcgenU7oYrqGhgs4OTEGji7Vrc97e84Gd34K0TRjQzSxO8Zxj8RbFS5GUQWtM5Twn/3YR7UwZ5Dl1fL9EhfHn9Vcsw=
