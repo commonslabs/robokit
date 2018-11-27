@@ -1,0 +1,14 @@
+language: python
+python: '3.6'
+install:
+- pip install -r requirements.txt
+script:
+- python -m unittest discover --start-directory ./tests/ --pattern '*_test.py' --verbose
+deploy:
+  provider: pypi
+  user: thomascountz
+  password:
+    secure: jK78pc3HJcj9Hi7Prsn0SSbBwffo3xuRispeuTV37ibtGgwp1u0/9AIZ58qJmNxZSX22UY+gB8yDL06dig2Csxz035CxXtdzXh4foSDUHp+QE/kMI0vryEOfBES/VOYlaZ+DdayOlbWG5pzPKya2AIAuAM3Lf9b2twilFfXF+r87J52U4KyYmIO2HtHQbUCS7yH/lqe88C6A2CRm4fLIlXaawOYB9/+k4Um+nCUXeRpnyZfD7hctMW/h8OU6K8qFOvicJp0e0c0O/TkPAaeOnerjDUwa/sfGt3XiTMH9C9gRmKUOYKX40p5XEnXKUiJAjd6mHgDyGRzhGZkB36wZ3hfIFF6gG04mc8ehtz3NbCWDcZkD4xVmjHw3FT1aWJZKD+Yp69tlswcAz3glo8DkhhqEn+LIe2UPGPRrYzIGt9aX8V9ne1x78apo+OqUhlSaPMFRHCdLchGKExH4pFMKe61V4yF59hVfrpwQBSPgtu2ksyaAlDqR3vVXBBZNOlpACaDVU61ZLd4qF2X9RxdAt9aujs5tkhZaJ9KZAbwCGwNchrZtBkZr8SYnZcWEGTCR/ZXDG2OyROGhaeaR/NGJETDI9ymfYJ4Ro/000DcTJzLMsdn1Wg6i4R4a7RfPOEUEcq9tUmxyYAFYYmqKGJkGQDKDLv0EV4uzr3mcNS3H3EI=
+  on:
+    branch: master
+    tags: true

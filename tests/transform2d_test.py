@@ -1,7 +1,7 @@
 import unittest
 from numpy.testing import assert_, assert_raises
 import numpy as np
-import transform2d
+from robokit import transform2d
 
 
 class TestTransform2d(unittest.TestCase):
