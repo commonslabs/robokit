@@ -4,4 +4,3 @@ install:
   - pip install -r requirements.txt
 script:
   - python -m unittest discover --start-directory ./tests/ --pattern '*_test.py' --verbose
-  - python ./tests/doctest_runner_test.py
